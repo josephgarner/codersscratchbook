@@ -22,6 +22,8 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+// @ts-expect-error - For google analytics
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const analytics = getAnalytics(app);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
