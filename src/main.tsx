@@ -1,33 +1,37 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
-import "./index.css";
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { BrowserRouter } from "react-router-dom";
+import { analytics } from "./firebase.ts";
+import Context from "./context/articleContext.tsx";
+import { CssBaseline } from "@mui/material";
+import ThemeProvider from "@mui/material/styles/ThemeProvider";
+import createTheme from "@mui/material/styles/createTheme";
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyB2dA75Zj4SQYTbQUJA4Fkx_CdwHDv7LDQ",
-  authDomain: "codersscratchbook.firebaseapp.com",
-  projectId: "codersscratchbook",
-  storageBucket: "codersscratchbook.appspot.com",
-  messagingSenderId: "558736415690",
-  appId: "1:558736415690:web:70b47d7221d67517120d33",
-  measurementId: "G-CPVZ1LHGSG",
-};
+analytics.app.automaticDataCollectionEnabled = true;
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-// @ts-expect-error - For google analytics
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const analytics = getAnalytics(app);
+const darkTheme = createTheme({
+  palette: {
+    mode: "dark",
+    text: {
+      primary: "rgba(255, 255, 255, 0.7)",
+    },
+  },
+  typography: {
+    fontFamily: ["Titillium Web", " sans-serif"].join(","),
+  },
+});
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <App />
+    <ThemeProvider theme={darkTheme}>
+      <CssBaseline>
+        <Context>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </Context>
+      </CssBaseline>
+    </ThemeProvider>
   </React.StrictMode>
 );
