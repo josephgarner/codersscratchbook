@@ -10,6 +10,7 @@ import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 import { useNavigate } from "react-router-dom";
+import { Grid } from "@mui/material";
 
 const pages = [
   { label: "Notebook", to: "/" },
@@ -37,22 +38,13 @@ function NavBar() {
     <AppBar position="static" sx={{ background: "none", boxShadow: "none", border: "none" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Typography
-            variant="h6"
-            noWrap
-            sx={{
-              mr: 2,
-              display: { xs: "none", md: "flex" },
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
+          <Box
+            onClick={() => handleCloseNavMenu({ to: "/" })}
+            sx={{ cursor: "pointer", flexGrow: 1, display: { xs: "flex", md: "none" }, justifyContent: "flex-start" }}
           >
-            Coders Scratch Book
-          </Typography>
-
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+            <img src="/assets/CSB_Logo.svg" height={30} />
+          </Box>
+          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" }, justifyContent: "flex-end" }}>
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -88,22 +80,42 @@ function NavBar() {
               ))}
             </Menu>
           </Box>
-          <Typography
-            variant="h5"
-            noWrap
+          <Grid
+            container
+            spacing={2}
             sx={{
-              mr: 2,
-              display: { xs: "flex", md: "none" },
               flexGrow: 1,
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
+              display: { xs: "none", md: "flex" },
+              justifyContent: "flex-start",
+              alignItems: "center",
             }}
           >
-            Coders Scratch Book
-          </Typography>
+            <Grid item display={"flex"} alignItems={"center"}>
+              <img
+                onClick={() => handleCloseNavMenu({ to: "/" })}
+                src="/assets/CSB_Logo.svg"
+                height={20}
+                style={{ cursor: "pointer" }}
+              />
+            </Grid>
+            <Grid item>
+              <Typography
+                variant="h6"
+                noWrap
+                onClick={() => handleCloseNavMenu({ to: "/" })}
+                sx={{
+                  mr: 2,
+                  fontWeight: 700,
+                  letterSpacing: ".3rem",
+                  color: "inherit",
+                  textDecoration: "none",
+                  cursor: "pointer",
+                }}
+              >
+                Coders Scratch Book
+              </Typography>
+            </Grid>
+          </Grid>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" }, justifyContent: "flex-end" }}>
             {pages.map((page) => (
               <Button

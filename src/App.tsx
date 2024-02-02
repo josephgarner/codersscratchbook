@@ -1,5 +1,5 @@
 import { Container } from "@mui/material";
-import Landing from "./Landing";
+import Landing from "./pages/Landing";
 import { Route, Routes } from "react-router-dom";
 import About from "./pages/About";
 import NavBar from "./components/navBar";

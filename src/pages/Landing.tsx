@@ -1,6 +1,6 @@
-import { useGlobalContext } from "./context/articleContext";
+import { useGlobalContext } from "../context/articleContext";
 import { Timeline, timelineItemClasses } from "@mui/lab";
-import ArticleSummary from "./components/articleSummary";
+import ArticleSummary from "../components/articleSummary";
 import { Grid, Typography } from "@mui/material";
 import { Helmet } from "react-helmet-async";
 

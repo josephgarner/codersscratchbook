@@ -48,7 +48,7 @@ function ArticleSummary({ article }: Props) {
               </Grid>
             </Grid>
             <Grid item xs={8}>
-              <Card onClick={() => handleNav({ to: article.postId })}>
+              <Card>
                 <CardMedia
                   sx={{ height: 320 }}
                   image={`/assets/${article.postId}/featured.jpg`}
@@ -60,7 +60,7 @@ function ArticleSummary({ article }: Props) {
                       <Typography variant="body1">{article.summary}</Typography>
                     </Grid>
                     <Grid item xs={12} display={"flex"} justifyContent={"flex-end"}>
-                      <Button variant="contained" disableElevation>
+                      <Button variant="contained" disableElevation onClick={() => handleNav({ to: article.postId })}>
                         Read on
                       </Button>
                     </Grid>
@@ -71,7 +71,7 @@ function ArticleSummary({ article }: Props) {
           </Grid>
         </TimelineContent>
       </TimelineItem>
-      <Grid container spacing={2} marginLeft={2} sx={{ display: { xs: "flex", md: "none" }, marginBottom: "2rem" }}>
+      <Grid container spacing={2} marginLeft={0} sx={{ display: { xs: "flex", md: "none" }, marginBottom: "2rem" }}>
         <Grid item xs={12}>
           <Typography variant="caption" marginBottom={2}>
             {formateDate(article.posted.seconds)}
@@ -95,10 +95,10 @@ function ArticleSummary({ article }: Props) {
             <CardContent>
               <Grid container direction={"column"} spacing={2}>
                 <Grid item xs={12}>
-                  <Typography variant="body1">{article.summary}</Typography>
+                  <Typography variant="body1">{article.summary.slice(0, 250)}...</Typography>
                 </Grid>
                 <Grid item xs={12} display={"flex"} justifyContent={"flex-end"}>
-                  <Button variant="contained" disableElevation>
+                  <Button variant="contained" disableElevation onClick={() => handleNav({ to: article.postId })}>
                     Read on
                   </Button>
                 </Grid>
