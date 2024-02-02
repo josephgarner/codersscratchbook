@@ -7,6 +7,7 @@ import Context from "./context/articleContext.tsx";
 import { CssBaseline } from "@mui/material";
 import ThemeProvider from "@mui/material/styles/ThemeProvider";
 import createTheme from "@mui/material/styles/createTheme";
+import { HelmetProvider } from "react-helmet-async";
 
 analytics.app.automaticDataCollectionEnabled = true;
 
@@ -16,6 +17,7 @@ const darkTheme = createTheme({
     text: {
       primary: "rgba(255, 255, 255, 0.7)",
     },
+    primary: { main: "#23372A", contrastText: "rgba(255, 255, 255, 0.7)" },
   },
   typography: {
     fontFamily: ["Titillium Web", " sans-serif"].join(","),
@@ -23,15 +25,17 @@ const darkTheme = createTheme({
 });
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
-    <ThemeProvider theme={darkTheme}>
-      <CssBaseline>
-        <Context>
-          <BrowserRouter>
-            <App />
-          </BrowserRouter>
-        </Context>
-      </CssBaseline>
-    </ThemeProvider>
-  </React.StrictMode>
+  <HelmetProvider>
+    <React.StrictMode>
+      <ThemeProvider theme={darkTheme}>
+        <CssBaseline>
+          <Context>
+            <BrowserRouter>
+              <App />
+            </BrowserRouter>
+          </Context>
+        </CssBaseline>
+      </ThemeProvider>
+    </React.StrictMode>
+  </HelmetProvider>
 );

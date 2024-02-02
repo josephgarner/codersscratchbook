@@ -1,3 +1,8 @@
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+
 <img src="/assets/my-desktop-pal/featured.jpg" width={"100%"} height={300} style={{ objectFit: "cover" }} />
 
 The initial idea came from a need and a want. I purchased two cheap switches online and have been using them for the past few months; one, a USB switcher, and the other, a DisplayPort switcher. However, an oversight when purchasing these switchers was their functional usability. We had to manually press a button on each device to trigger the switch at the start and end of every day while working from home, and the placement of the switchers made this problematic. Moving the switches above the desk was an option to make it easier to activate them, however, this would introduce clutter on the desk, so I wanted to avoid this option.
@@ -24,8 +29,22 @@ The second step was designing an enclosure for the final product. To do this, I 
 
 My main challenge was the material I used for the prototype cases. Although PLA is suitable for most tasks, it lacks heat resistance. These small electronics can get warm and reach PLA's glass transition temperature (GTT). To ease this concern, PETG was chosen as the material for the final product as it has a higher GTT. This material selection introduced some new hurdles. One particular issue I ran into with PETG was its tendency to cause stringing during printing, leading to a material buildup in unwanted places. To reduce the occurrence of the PETG filament stringing, it was dried for an extended period, the print nozzle temperature was decreased by 5 degrees, and the print supports were switched to organic, which reduced their footprint, resulting in the print head needing to travel in across gaps less often.
 
-<img src="/assets/my-desktop-pal/Image-one.jpg" height={300} />
-<img src="/assets/my-desktop-pal/Image-two.jpg" height={300} />
+<br />
+<Swiper navigation={true} modules={[Navigation]} className="mySwiper">
+  <SwiperSlide>
+    <img src="/assets/my-desktop-pal/Image-one.jpg" width={"100%"} height={600} style={{ objectFit: "cover" }} />
+  </SwiperSlide>
+  <SwiperSlide>
+    <img src="/assets/my-desktop-pal/Image-two.jpg" width={"100%"} height={600} style={{ objectFit: "cover" }} />
+  </SwiperSlide>
+  <SwiperSlide>
+    <img src="/assets/my-desktop-pal/Image-four.jpg" width={"100%"} height={600} style={{ objectFit: "cover" }} />
+  </SwiperSlide>
+  <SwiperSlide>
+    <img src="/assets/my-desktop-pal/Image-three.jpg" width={"100%"} height={600} style={{ objectFit: "cover" }} />
+  </SwiperSlide>
+</Swiper>
+<br />
 
 Once the final case print had started, I began wiring and soldering all components together. Although it increased costs, a decision was made to add female connectors to the prototype board. As I was not soldering the parts directly to the prototype board, the more expensive parts could be replaced if they broke or reused if the project was decommissioned.
 

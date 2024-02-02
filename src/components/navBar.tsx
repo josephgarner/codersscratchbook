@@ -13,7 +13,7 @@ import { useNavigate } from "react-router-dom";
 
 const pages = [
   { label: "Notebook", to: "/" },
-  { label: "About", to: "/About" },
+  // { label: "About", to: "/About" },
 ];
 
 function NavBar() {
