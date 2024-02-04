@@ -44,7 +44,7 @@ export default function Context({ children }: ContextProp) {
     const date = new Date();
     const unsubscribe = onSnapshot(collection(db, `articles`), (query) => {
       const articles = query.docs
-        .filter((doc) => doc.data().posted.seconds < date.getTime())
+        .filter((doc) => doc.data().posted.seconds < date.getTime() / 1000)
         .map((doc) => {
           const data = doc.data();
           return {

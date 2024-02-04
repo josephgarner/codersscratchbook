@@ -17,7 +17,7 @@ const darkTheme = createTheme({
     text: {
       primary: "rgba(255, 255, 255, 0.7)",
     },
-    primary: { main: "#23372A", contrastText: "rgba(255, 255, 255, 0.7)" },
+    primary: { main: "#3c7a26", contrastText: "rgba(255, 255, 255, 0.7)" },
   },
   typography: {
     fontFamily: ["Titillium Web", " sans-serif"].join(","),

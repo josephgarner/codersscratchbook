@@ -7,6 +7,17 @@ import "swiper/css/navigation";
 
 My Desk Pal a simple and cheap tech to optimise my workflow. The initial idea came from a need and a want. I purchased two cheap switches online and have been using them for the past few months; one, a USB switcher, and the other, a DisplayPort switcher. However, an oversight when purchasing these switchers was their functional usability. We had to manually press a button on each device to trigger the switch at the start and end of every day while working from home, and the placement of the switchers made this problematic. Moving the switches above the desk was an option to make it easier to activate them, however, this would introduce clutter on the desk, so I wanted to avoid this option.
 
+_[Current workflow pictured below]_
+
+<video width={"100%"} muted autoPlay loop>
+  <source src="/assets/my-desktop-pal/old_system.mp4" type="video/mp4" />
+  <meta itemprop="name" content="Current workflow pictured" />
+  <meta
+    itemprop="description"
+    content="The usb and monitor are fed into two different devices. these devices need to be triggered independently of each other resulting in delay when switching between machines"
+  />
+</video>
+
 ### Goals!
 
 I wanted to fix the usability of the switches while integrating them into an office control panel. I devised three significant requirements that my desired solution had to meet.
@@ -27,8 +38,6 @@ To control the ESP module, I relied on the existing ESPHome framework. This fram
 
 The second step was designing an enclosure for the final product. To do this, I used Fusion360, taking top-down photos of each component alongside a ruler so that I could import the images and size them to scale. I then created simple mocks of each component and placed them in 3D space to create a general layout for the housing of the finished device. Utilising a Prusa 3D printer, I rapidly printed prototypes of the case to see what was and wasn't working. After a few failures and errors, I settled on the final design of the case.
 
-My main challenge was the material I used for the prototype cases. Although PLA is suitable for most tasks, it lacks heat resistance. These small electronics can get warm and reach PLA's glass transition temperature (GTT). To ease this concern, PETG was chosen as the material for the final product as it has a higher GTT. This material selection introduced some new hurdles. One particular issue I ran into with PETG was its tendency to cause stringing during printing, leading to a material buildup in unwanted places. To reduce the occurrence of the PETG filament stringing, it was dried for an extended period, the print nozzle temperature was decreased by 5 degrees, and the print supports were switched to organic, which reduced their footprint, resulting in the print head needing to travel in across gaps less often.
-
 <br />
 <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
   <SwiperSlide>
@@ -46,6 +55,8 @@ My main challenge was the material I used for the prototype cases. Although PLA 
 </Swiper>
 <br />
 
+My main challenge was the material I used for the prototype cases. Although PLA is suitable for most tasks, it lacks heat resistance. These small electronics can get warm and reach PLA's glass transition temperature (GTT). To ease this concern, PETG was chosen as the material for the final product as it has a higher GTT. This material selection introduced some new hurdles. One particular issue I ran into with PETG was its tendency to cause stringing during printing, leading to a material buildup in unwanted places. To reduce the occurrence of the PETG filament stringing, it was dried for an extended period, the print nozzle temperature was decreased by 5 degrees, and the print supports were switched to organic, which reduced their footprint, resulting in the print head needing to travel in across gaps less often.
+
 Once the final case print had started, I began wiring and soldering all components together. Although it increased costs, a decision was made to add female connectors to the prototype board. As I was not soldering the parts directly to the prototype board, the more expensive parts could be replaced if they broke or reused if the project was decommissioned.
 
 During testing, the device failed to read temperature sensor data and control both switches. Upon further inspection, I noticed during the soldering phase that the ground wires had yet to be soldered to the correct pin on the ESP32 module. The fix required the annoying and painful process of desoldering the wires and moving them to the correct pin.
@@ -53,6 +64,17 @@ During testing, the device failed to read temperature sensor data and control bo
 Once the case had finished printing, I used a heat gun to remove any stringing that had occurred. I then heat-pressed in the brass threads that would be used to secure all the components and close the case. Then, using a hot glue gun, glued in place some neodymium magnets that would be used to mount the device to the underside of our desk easily.
 
 ### Wrap up
+
+_[Smart switcher workflow pictured below]_
+
+<video width={"100%"} muted autoPlay loop>
+  <source src="/assets/my-desktop-pal/new_system.mp4" type="video/mp4" />
+  <meta itemprop="name" content="New Smart switcher workflow pictured" />
+  <meta
+    itemprop="description"
+    content="The usb and monitor are controlled via the same switch resulting in fast and convenient switching with the addition of a temprature reading for the room"
+  />
+</video>
 
 The smart switcher has been deployed for two weeks now. We can call the project a success with only one or two hiccups while using it. If I were to do the project again, I would like to add a few creature comforts.
 
