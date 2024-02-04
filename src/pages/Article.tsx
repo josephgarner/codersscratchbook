@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { useGlobalContext } from "../context/articleContext";
 import { formateDate } from "../utils/formatDate";
 import { Helmet } from "react-helmet-async";
-import { Chip, Grid, Skeleton, Stack, Typography } from "@mui/material";
+import { Chip, Grid, Skeleton, Typography } from "@mui/material";
 
 function Article() {
   const [writtenWord, setWrittenWord] = useState();
