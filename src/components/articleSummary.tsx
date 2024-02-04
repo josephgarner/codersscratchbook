@@ -1,4 +1,4 @@
-import { Button, Card, CardContent, CardMedia, Chip, Grid, Stack, Typography } from "@mui/material";
+import { Button, Card, CardContent, CardMedia, Chip, Grid, Typography } from "@mui/material";
 import { TimelineContent, TimelineDot, TimelineItem, TimelineSeparator } from "@mui/lab";
 import { ArticleSummary } from "../types";
 import { useNavigate } from "react-router-dom";
@@ -40,11 +40,15 @@ function ArticleSummary({ article }: Props) {
                 <Typography variant="h4" marginBottom={2}>
                   {article.title}
                 </Typography>
-                <Stack direction="row" spacing={1}>
+                <Grid container spacing={1}>
                   {article.tags.map((tag) => {
-                    return <Chip key={"d" + tag} color="primary" label={tag} />;
+                    return (
+                      <Grid item key={"d" + tag}>
+                        <Chip color="primary" label={tag} />
+                      </Grid>
+                    );
                   })}
-                </Stack>
+                </Grid>
               </Grid>
             </Grid>
             <Grid item xs={8}>
@@ -79,11 +83,15 @@ function ArticleSummary({ article }: Props) {
           <Typography variant="h4" marginBottom={2}>
             {article.title}
           </Typography>
-          <Stack direction="row" spacing={1}>
+          <Grid container spacing={1}>
             {article.tags.map((tag) => {
-              return <Chip key={tag} color="primary" label={tag} />;
+              return (
+                <Grid item key={tag}>
+                  <Chip color="primary" label={tag} />
+                </Grid>
+              );
             })}
-          </Stack>
+          </Grid>
         </Grid>
         <Grid item xs={12}>
           <Card onClick={() => handleNav({ to: article.postId })}>

@@ -53,11 +53,15 @@ function Article() {
           <Typography variant="h3" marginBottom={2}>
             {article.title}
           </Typography>
-          <Stack direction="row" spacing={1}>
+          <Grid container spacing={1}>
             {article.tags.map((tag) => {
-              return <Chip key={tag} color="primary" label={tag} />;
+              return (
+                <Grid item key={"d" + tag}>
+                  <Chip color="primary" label={tag} />
+                </Grid>
+              );
             })}
-          </Stack>
+          </Grid>
         </Grid>
         <Grid item xs={12} md={8}>
           {writtenWord ? writtenWord : loadingArticle()}
