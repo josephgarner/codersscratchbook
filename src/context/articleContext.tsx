@@ -21,7 +21,9 @@ export const AppContext = React.createContext({} as ValueProp);
 
 export default function Context({ children }: ContextProp) {
   const [article, setArticle] = useState<ArticleSummary | null>(null);
-  const [articleSummaries, setArticleSummaries] = useState<Array<ArticleSummary>>([]);
+  const [articleSummaries, setArticleSummaries] = useState<
+    Array<ArticleSummary>
+  >([]);
 
   const getArticle = ({ id }: GetArticleProps) => {
     onSnapshot(collection(db, `articles`), (query) => {
@@ -42,28 +44,35 @@ export default function Context({ children }: ContextProp) {
 
   useEffect(() => {
     const date = new Date();
-    const unsubscribe = onSnapshot(query(collection(db, `articles`), orderBy("posted", "desc")), (query) => {
-      const articles = query.docs
-        // .filter((doc) => doc.data().posted.seconds < date.getTime() / 1000)
-        .map((doc) => {
-          const data = doc.data();
-          return {
-            documentId: doc.id,
-            title: data.Title,
-            postId: data.postId,
-            summary: data.summary,
-            tags: data.tags,
-            posted: data.posted,
-          };
-        });
-      setArticleSummaries(articles);
-    });
+    const unsubscribe = onSnapshot(
+      query(collection(db, `articles`), orderBy("posted", "desc")),
+      (query) => {
+        const articles = query.docs
+          .filter((doc) => doc.data().posted.seconds < date.getTime() / 1000)
+          .map((doc) => {
+            const data = doc.data();
+            return {
+              documentId: doc.id,
+              title: data.Title,
+              postId: data.postId,
+              summary: data.summary,
+              tags: data.tags,
+              posted: data.posted,
+            };
+          });
+        setArticleSummaries(articles);
+      }
+    );
     return () => {
       unsubscribe();
     };
   }, []);
 
-  return <AppContext.Provider value={{ article, getArticle, articleSummaries }}>{children}</AppContext.Provider>;
+  return (
+    <AppContext.Provider value={{ article, getArticle, articleSummaries }}>
+      {children}
+    </AppContext.Provider>
+  );
 }
 
 export const useGlobalContext = (): ValueProp => {
