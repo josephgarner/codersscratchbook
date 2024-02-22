@@ -35,8 +35,14 @@ function Landing() {
                 },
               }}
             >
-              {articleSummaries.map((article) => {
-                return <ArticleSummary key={article.documentId} article={article} />;
+              {articleSummaries.map((article, index) => {
+                return (
+                  <ArticleSummary
+                    key={article.documentId}
+                    article={article}
+                    last={index === articleSummaries.length - 1}
+                  />
+                );
               })}
             </Timeline>
             <Grid container spacing={2} sx={{ display: { xs: "flex", md: "none" } }}>

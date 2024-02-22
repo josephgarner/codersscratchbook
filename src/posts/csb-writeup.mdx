@@ -1,0 +1,60 @@
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+
+I have never really liked the idea of writing a blog, and the thought of others reading my notes is somewhat terrifying. You may ask yourself, "Then why did this person start a blog?" and you would be right to ask. As a software developer and overall technology geek, I, like many others, have a list of abandoned personal projects with nothing to show for my failures and successes – but I wanted this to change and I wanted to have a record of my projects regardless of how they ended. And, after numerous abandoned attempts, I finally chose to sit down and build a portfolio blog and deploy it to the internet. So, I welcome to the world "Coders Scratch Book".
+
+As a visually orientated person, I initially thought of filming and editing my projects and keeping a video record; however, this would introduce significant overhead both during and after the projects. So in the interest of avoiding this rather time intensive option, I decided to go with a more lightweight solution. And as I see it, a lightweight version of a video log is a written log. So, to answer the question, "Why did I start a blog?":
+
+> Firstly, I want to share my projects with the broader community and have a personal portfolio to showcase my work.
+
+> Secondly, to gamify the report writing process by utilising analytics to view site visitors and engagement time, similar to a simple "numbers go up" game.
+
+> Thirdly, I wanted to create a simple website to work on and improve continuously.
+
+<video width={"100%"} muted autoPlay loop webkit-playsinline playsinline>
+  <source src="/assets/csb-writeup/hero.mp4" type="video/mp4" />
+  <meta itemprop="name" content="Current workflow pictured" />
+  <meta
+    itemprop="description"
+    content="The usb and monitor are fed into two different devices. these devices need to be triggered independently of each other resulting in delay when switching between machines"
+  />
+</video>
+
+### Goals
+
+My mentality for this project was simple: I wanted to create a blog in as little time as possible and not let myself get bogged down early in the details. The blog won't be perfect; however, having a finished ’good enough’ blog is better than chasing perfection and never reaching that ‘go live’ finish line. With that in mind, my two primary goals for this project are:
+
+> To create a website where I can publish work.
+
+> To refresh my frontend web development knowledge and challenge myself to create a blog without following a guide
+
+### Implementation
+
+#### The struggle of a page layout
+
+I initially ran through a few iterations for the page design when first creating this blog. Design is not my strongest forte, so I chose to keep the design simple; after all, it is an aspect of the blog that I can iterate and improve on over time. I first chose a layout with a "Hero" article to showcase the latest post and then display a list of older articles below it. However, when actually implemented and viewed, this layout did not suit the blog I currently had; that is, a blog with a total of 1 post. This limitation of a single post then led me to a different design, a simple list-style layout. However, this still wasn’t a great fit as it felt too simple for a desktop. While still looking for layout inspiration I stumbled upon a template for a change log on Framer. The simple design and developer-like theme resonated with me, and I decided to run with the layout, thankfully solving a large problem and allowing me to move on to my next and most significant challenge.
+
+<br />
+<Swiper navigation={true} modules={[Navigation]} className="mySwiper">
+  <SwiperSlide>
+    <img src="/assets/csb-writeup/old_layout.png" width={"100%"} height={400} style={{ objectFit: "cover" }} />
+  </SwiperSlide>
+  <SwiperSlide>
+    <img src="/assets/csb-writeup/new_layout.png" width={"100%"} height={400} style={{ objectFit: "cover" }} />
+  </SwiperSlide>
+</Swiper>
+<br />
+
+#### One does not simply handle posts.
+
+The most significant hurdle of this project was the process of handling posts. I wanted to create a system to copy my write-ups from my notes app <a href="https://obsidian.md/" target="_blank">Obsidian</a> to the blog with minimal change.
+
+I looked into a few options, starting with storing the posts as raw <a href="https://en.wikipedia.org/wiki/Markdown" target="_blank">markdown</a> and loading them directly to a page based on the URL param, however, I quickly abandoned that idea as I struggled to get `react-markdown` working dynamically. I then moved on to similar packages that converted <a href="https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/HTML_basics" target="_blank">HTML</a> to <a href="https://react.dev/learn/writing-markup-with-jsx" target="_blank">JSX</a> and another that dynamically loaded JSX files. Both these solutions worked, however, there was significant overhead in converting my notes to those formats. I was running into the issue of styling mismatch, where the write-ups were displayed in a different font than the rest of the site. I decided to take another attempt at dynamically loading a markdown file as this would require the least work when moving my write-ups to the blog. I stumbled upon a framework called <a href="https://mdxjs.com/" target="_blank">MDXJS</a> which hails itself as "Markdown for the component era". This handy little framework lets me copy my Obsidian markdown into a `mdx` file and insert React components and images to style the article beyond simple markdown limitations. MDXJS also allows for dynamic loading, where it can read a `.mdx` file from storage and display its contents to the reader, solving my most significant problem.
+
+### Wrap up
+
+The list of things I would like to improve and change on the blog is seemingly endless, but I’ve accepted now that this is natural. I have a blog to show for my work, which I can share with others, and most importantly, it gives me a drive to finish future projects.
+
+The blog will evolve and iterate over time and grow with my career and hobbies, but at this point, it's good enough, which is the most critical aspect.
