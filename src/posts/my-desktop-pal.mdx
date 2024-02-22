@@ -2,6 +2,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
+import { BrowserView, MobileView } from "react-device-detect";
 
 <img src="/assets/my-desktop-pal/featured.jpg" width={"100%"} height={300} style={{ objectFit: "cover" }} />
 
@@ -9,14 +10,26 @@ My Desk Pal a simple and cheap tech to optimise my workflow. The initial idea ca
 
 _[Current workflow pictured below]_
 
-<video width={"100%"} muted autoPlay loop webkit-playsinline playsinline>
-  <source src="/assets/my-desktop-pal/old_system.mp4" type="video/mp4" />
-  <meta itemprop="name" content="Current workflow pictured" />
-  <meta
-    itemprop="description"
-    content="The usb and monitor are fed into two different devices. these devices need to be triggered independently of each other resulting in delay when switching between machines"
-  />
-</video>
+<BrowserView>
+  <video width={"100%"} muted autoPlay loop webkit-playsinline playsinline>
+    <source src="/assets/my-desktop-pal/old_system.mp4" type="video/mp4" />
+    <meta itemprop="name" content="Current workflow pictured" />
+    <meta
+      itemprop="description"
+      content="The usb and monitor are fed into two different devices. these devices need to be triggered independently of each other resulting in delay when switching between machines"
+    />
+  </video>
+</BrowserView>
+<MobileView>
+  <video width={"100%"} muted controls loop webkit-playsinline playsinline>
+    <source src="/assets/my-desktop-pal/old_system.mp4" type="video/mp4" />
+    <meta itemprop="name" content="Current workflow pictured" />
+    <meta
+      itemprop="description"
+      content="The usb and monitor are fed into two different devices. these devices need to be triggered independently of each other resulting in delay when switching between machines"
+    />
+  </video>
+</MobileView>
 
 ### Goals!
 
@@ -67,14 +80,26 @@ Once the case had finished printing, I used a heat gun to remove any stringing t
 
 _[Smart switcher workflow pictured below]_
 
-<video width={"100%"} muted autoPlay loop webkit-playsinline playsinline>
-  <source src="/assets/my-desktop-pal/new_system.mp4" type="video/mp4" />
-  <meta itemprop="name" content="New Smart switcher workflow pictured" />
-  <meta
-    itemprop="description"
-    content="The usb and monitor are controlled via the same switch resulting in fast and convenient switching with the addition of a temprature reading for the room"
-  />
-</video>
+<BrowserView>
+  <video width={"100%"} muted autoPlay loop webkit-playsinline playsinline>
+    <source src="/assets/my-desktop-pal/new_system.mp4" type="video/mp4" />
+    <meta itemprop="name" content="New Smart switcher workflow pictured" />
+    <meta
+      itemprop="description"
+      content="The usb and monitor are controlled via the same switch resulting in fast and convenient switching with the addition of a temprature reading for the room"
+    />
+  </video>
+</BrowserView>
+<MobileView>
+  <video width={"100%"} muted controls loop webkit-playsinline playsinline>
+    <source src="/assets/my-desktop-pal/new_system.mp4" type="video/mp4" />
+    <meta itemprop="name" content="New Smart switcher workflow pictured" />
+    <meta
+      itemprop="description"
+      content="The usb and monitor are controlled via the same switch resulting in fast and convenient switching with the addition of a temprature reading for the room"
+    />
+  </video>
+</MobileView>
 
 The smart switcher has been deployed for two weeks now. We can call the project a success with only one or two hiccups while using it. If I were to do the project again, I would like to add a few creature comforts.
 

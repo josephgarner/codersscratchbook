@@ -2,6 +2,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
+import { BrowserView, MobileView } from "react-device-detect";
 
 I have never really liked the idea of writing a blog, and the thought of others reading my notes is somewhat terrifying. You may ask yourself, "Then why did this person start a blog?" and you would be right to ask. As a software developer and overall technology geek, I, like many others, have a list of abandoned personal projects with nothing to show for my failures and successes – but I wanted this to change and I wanted to have a record of my projects regardless of how they ended. And, after numerous abandoned attempts, I finally chose to sit down and build a portfolio blog and deploy it to the internet. So, I welcome to the world "Coders Scratch Book".
 
@@ -13,14 +14,20 @@ As a visually orientated person, I initially thought of filming and editing my p
 
 > Thirdly, I wanted to create a simple website to work on and improve continuously.
 
-<video width={"100%"} muted autoPlay loop webkit-playsinline playsinline>
-  <source src="/assets/csb-writeup/hero.mp4" type="video/mp4" />
-  <meta itemprop="name" content="Current workflow pictured" />
-  <meta
-    itemprop="description"
-    content="The usb and monitor are fed into two different devices. these devices need to be triggered independently of each other resulting in delay when switching between machines"
-  />
-</video>
+<BrowserView>
+  <video width={"100%"} muted autoPlay loop webkit-playsinline playsinline>
+    <source src="/assets/csb-writeup/hero.mp4" type="video/mp4" />
+    <meta itemprop="name" content="Current workflow pictured" />
+    <meta itemprop="description" content="A depiction of my project development cycle" />
+  </video>
+</BrowserView>
+<MobileView>
+  <video width={"100%"} muted controls loop webkit-playsinline playsinline>
+    <source src="/assets/csb-writeup/hero.mp4" type="video/mp4" />
+    <meta itemprop="name" content="Current workflow pictured" />
+    <meta itemprop="description" content="A depiction of my project development cycle" />
+  </video>
+</MobileView>
 
 ### Goals
 
