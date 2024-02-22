@@ -1,5 +1,19 @@
-import { Button, Card, CardContent, CardMedia, Chip, Grid, Typography } from "@mui/material";
-import { TimelineConnector, TimelineContent, TimelineDot, TimelineItem, TimelineSeparator } from "@mui/lab";
+import {
+  Button,
+  Card,
+  CardContent,
+  CardMedia,
+  Chip,
+  Grid,
+  Typography,
+} from "@mui/material";
+import {
+  TimelineConnector,
+  TimelineContent,
+  TimelineDot,
+  TimelineItem,
+  TimelineSeparator,
+} from "@mui/lab";
 import { ArticleSummary } from "../types";
 import { useNavigate } from "react-router-dom";
 import { formateDate } from "../utils/formatDate";
@@ -64,8 +78,17 @@ function ArticleSummary({ article, last = false }: Props) {
                     <Grid item xs={12}>
                       <Typography variant="body1">{article.summary}</Typography>
                     </Grid>
-                    <Grid item xs={12} display={"flex"} justifyContent={"flex-end"}>
-                      <Button variant="contained" disableElevation onClick={() => handleNav({ to: article.postId })}>
+                    <Grid
+                      item
+                      xs={12}
+                      display={"flex"}
+                      justifyContent={"flex-end"}
+                    >
+                      <Button
+                        variant="contained"
+                        disableElevation
+                        onClick={() => handleNav({ to: article.postId })}
+                      >
                         Read on
                       </Button>
                     </Grid>
@@ -76,7 +99,12 @@ function ArticleSummary({ article, last = false }: Props) {
           </Grid>
         </TimelineContent>
       </TimelineItem>
-      <Grid container spacing={2} marginLeft={0} sx={{ display: { xs: "flex", md: "none" }, marginBottom: "2rem" }}>
+      <Grid
+        container
+        spacing={2}
+        marginLeft={0}
+        sx={{ display: { xs: "flex", md: "none" }, marginBottom: "2rem" }}
+      >
         <Grid item xs={12}>
           <Typography variant="caption" marginBottom={2}>
             {formateDate(article.posted.seconds)}
@@ -104,10 +132,16 @@ function ArticleSummary({ article, last = false }: Props) {
             <CardContent>
               <Grid container direction={"column"} spacing={2}>
                 <Grid item xs={12}>
-                  <Typography variant="body1">{article.summary.slice(0, 250)}...</Typography>
+                  <Typography variant="body1">
+                    {article.summary.slice(0, 250)}...
+                  </Typography>
                 </Grid>
                 <Grid item xs={12} display={"flex"} justifyContent={"flex-end"}>
-                  <Button variant="contained" disableElevation onClick={() => handleNav({ to: article.postId })}>
+                  <Button
+                    variant="contained"
+                    disableElevation
+                    onClick={() => handleNav({ to: article.postId })}
+                  >
                     Read on
                   </Button>
                 </Grid>
