@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { collection, onSnapshot } from "firebase/firestore";
+import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import { ArticleSummary } from "../types";
 import { db } from "../firebase";
 
@@ -42,9 +42,9 @@ export default function Context({ children }: ContextProp) {
 
   useEffect(() => {
     const date = new Date();
-    const unsubscribe = onSnapshot(collection(db, `articles`), (query) => {
+    const unsubscribe = onSnapshot(query(collection(db, `articles`), orderBy("posted", "desc")), (query) => {
       const articles = query.docs
-        .filter((doc) => doc.data().posted.seconds < date.getTime() / 1000)
+        // .filter((doc) => doc.data().posted.seconds < date.getTime() / 1000)
         .map((doc) => {
           const data = doc.data();
           return {

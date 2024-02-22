@@ -1,14 +1,15 @@
 import { Button, Card, CardContent, CardMedia, Chip, Grid, Typography } from "@mui/material";
-import { TimelineContent, TimelineDot, TimelineItem, TimelineSeparator } from "@mui/lab";
+import { TimelineConnector, TimelineContent, TimelineDot, TimelineItem, TimelineSeparator } from "@mui/lab";
 import { ArticleSummary } from "../types";
 import { useNavigate } from "react-router-dom";
 import { formateDate } from "../utils/formatDate";
 
 type Props = {
   article: ArticleSummary;
+  last?: boolean;
 };
 
-function ArticleSummary({ article }: Props) {
+function ArticleSummary({ article, last = false }: Props) {
   const navigate = useNavigate();
 
   type NavProps = {
@@ -24,14 +25,14 @@ function ArticleSummary({ article }: Props) {
       <TimelineItem
         sx={{
           display: { xs: "none", md: "flex" },
-          marginBottom: "4rem",
         }}
       >
         <TimelineSeparator>
           <TimelineDot />
+          {!last ? <TimelineConnector /> : null}
         </TimelineSeparator>
         <TimelineContent>
-          <Grid container spacing={2} marginLeft={2}>
+          <Grid container spacing={2} marginLeft={2} marginBottom={12}>
             <Grid item xs={4}>
               <Grid container spacing={2} direction={"column"}>
                 <Typography variant="caption" marginBottom={2}>

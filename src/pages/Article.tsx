@@ -4,6 +4,7 @@ import { useGlobalContext } from "../context/articleContext";
 import { formateDate } from "../utils/formatDate";
 import { Helmet } from "react-helmet-async";
 import { Chip, Grid, Skeleton, Typography } from "@mui/material";
+import "./linkStyles.css";
 
 function Article() {
   const [writtenWord, setWrittenWord] = useState();
